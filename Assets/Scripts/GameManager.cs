@@ -13,13 +13,22 @@ public class GameManager : MonoBehaviour
     public GameObject pausePanel;    
     public Text messageText;         
     public Text countdownText;       
-    public Button continueButton;    
+    public Button continueButton;  
+    public GameObject UI;
+    public Text healthText;          // Displays player's health
+    public Text scoreText;           // Displays player's score
+    public GameObject gameOverPanel; // Show on game over
+    public GameObject winPanel;      // Show on win
 
     [Header("Gameplay Settings")]
     public float gracePeriod = 3f; 
     public float pauseDuration = 3f;      
     public string[] hitMessages;          
+    public int maxHealth = 3;             // Player starts with 3 health
+    public int targetScore = 10;          // Score required to win
 
+    private int currentHealth;
+    private int currentScore;
     private bool isPaused = false;
     private Coroutine graceCoroutine;
 
@@ -36,7 +45,24 @@ public class GameManager : MonoBehaviour
 
         if (pausePanel)
             pausePanel.SetActive(false);
+        if (gameOverPanel)
+            gameOverPanel.SetActive(false);
+        if (winPanel)
+            winPanel.SetActive(false);
+
+        currentHealth = maxHealth;
+        currentScore = 0;
+        UpdateUI();
     }
+
+    private void UpdateUI()
+    {
+        if (healthText)
+            healthText.text = "Health: " + currentHealth;
+        if (scoreText)
+            scoreText.text = "Score: " + currentScore;
+    }
+
 
     public void DisablePlayer()
     {
@@ -60,7 +86,6 @@ public class GameManager : MonoBehaviour
             player.enabled = true;
         }
     }
-
 
 
     public void PauseGame()
@@ -106,7 +131,6 @@ public class GameManager : MonoBehaviour
         isPaused = false;
     }
 
-
     private void OnContinuePressed()
     {
         if (pausePanel)
@@ -140,4 +164,52 @@ public class GameManager : MonoBehaviour
         yield return new WaitForSeconds(gracePeriod);
         PauseGame();
     }
+
+    public void TakeDamage(int damage = 1)
+    {
+        if (currentHealth <= 0) return;
+
+        currentHealth -= damage;
+        if (currentHealth < 0)
+            currentHealth = 0;
+
+        UpdateUI();
+
+        if (currentHealth <= 0)
+        {
+            GameOver();
+        }
+    }
+
+    public void AddPoints(int points, string enemyType)
+    {
+        currentScore += points;
+        UpdateUI();
+
+        Debug.Log($"Enemy {enemyType} defeated! +{points} points");
+
+        if (currentScore >= targetScore)
+        {
+            WinGame();
+        }
+    }
+
+    private void GameOver()
+    {
+        DisablePlayer();
+        if (gameOverPanel)
+            gameOverPanel.SetActive(true);
+        Debug.Log("Game Over!");
+        Time.timeScale = 0f;
+    }
+
+    private void WinGame()
+    {
+        DisablePlayer();
+        if (winPanel)
+            winPanel.SetActive(true);
+        Debug.Log("You Win!");
+        Time.timeScale = 0f;
+    }
+
 }

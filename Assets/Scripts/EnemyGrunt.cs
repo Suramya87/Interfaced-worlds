@@ -15,6 +15,8 @@ public class EnemyGrunt : Enemy
 
     protected override void Die()
     {
+        GameManager.Instance.AddPoints(1, "GRUNT");
+
 
         base.Die();
     }

@@ -25,7 +25,8 @@ public class SniperBullet : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
-        {
+        {   
+            GameManager.Instance.TakeDamage(1);
             GameManager.Instance?.PauseGame();
             gameObject.SetActive(false);
         }

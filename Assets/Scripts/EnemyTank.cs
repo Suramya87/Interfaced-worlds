@@ -15,6 +15,8 @@ public class EnemyTank : Enemy
 
     protected override void Die()
     {
+        GameManager.Instance.AddPoints(2, "TANK");
+
 
         base.Die();
     }

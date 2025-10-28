@@ -59,6 +59,8 @@ public class EnemySniper : Enemy
 
     protected override void Die()
     {
+        GameManager.Instance.AddPoints(3, "SNIPER");
+
         base.Die();
     }
 }

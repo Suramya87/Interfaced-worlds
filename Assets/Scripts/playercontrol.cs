@@ -49,7 +49,7 @@ public class CharacterControl : MonoBehaviour
     {
         float mouseX = Input.GetAxis("Mouse X") * mouseSensitivity * Time.deltaTime;
 
-        // Rotate player left/right only (yaw)
+        
         transform.Rotate(Vector3.up * mouseX);
     }
 
