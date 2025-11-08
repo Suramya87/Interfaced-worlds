@@ -15,6 +15,11 @@ public class MainMenu : MonoBehaviour
         SceneManager.LoadScene(gameSceneName);
         Debug.Log("CREIDTS Game"); 
     }
+    public void How(string gameSceneName)
+    {
+        SceneManager.LoadScene(gameSceneName);
+        Debug.Log("How to play"); 
+    }
 
     public void QuitGame()
     {

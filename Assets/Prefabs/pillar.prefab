@@ -68,7 +68,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8d118278bfb4fd244b444f6efc853019, type: 2}
+  - {fileID: 2100000, guid: 1197f6ef48f9ee04db4fa820cee4deae, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -126,7 +126,7 @@ NavMeshObstacle:
   m_Shape: 1
   m_Extents: {x: 5, y: 7, z: 5}
   m_MoveThreshold: 0.1
-  m_Carve: 0
+  m_Carve: 1
   m_CarveOnlyStationary: 1
   m_Center: {x: 0, y: 0, z: 0}
   m_TimeToStationary: 0.5

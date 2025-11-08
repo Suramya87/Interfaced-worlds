@@ -5,16 +5,25 @@ public class PauseMenu : MonoBehaviour
 {
     [SerializeField] private GameObject pauseMenuUI; // Assign your UI panel here
     private bool isPaused = false;
+    private bool wakeup = false;
 
     void Update()
     {
+        if (!wakeup) 
+        { 
+            pauseMenuUI.SetActive(false);
+            wakeup = true;
+        }
         // Toggle pause with UpArrow
         if (Input.GetKeyDown(KeyCode.UpArrow))
         {
-            if (isPaused)
-                Resume();
-            else
+            if (!isPaused)
                 Pause();
+
+                // Resume();
+            else
+                // Pause();
+                Resume();
         }
     }
 

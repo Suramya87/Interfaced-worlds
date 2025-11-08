@@ -12,8 +12,8 @@ public class Enemy : MonoBehaviour
     [Header("Pathfinding")]
     public NavMeshAgent agent;
     public Transform player;
-    public float sightRange = 15f;     // How far the enemy can detect the player
-    public LayerMask obstacleMask;     // Layer for obstacles blocking line of sight
+    public float sightRange = 15f;     
+    public LayerMask obstacleMask;     
 
     [Header("Attack")]
     public int damageAmount = 10;
@@ -71,7 +71,6 @@ public class Enemy : MonoBehaviour
 
         float distanceToPlayer = Vector3.Distance(transform.position, player.position);
 
-        // Check if player is within sight range AND visible
         if (distanceToPlayer <= sightRange && HasLineOfSight())
         {
             ChasePlayer();

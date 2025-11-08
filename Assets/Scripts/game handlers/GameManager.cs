@@ -199,8 +199,9 @@ public class GameManager : MonoBehaviour
         DisablePlayer();
         if (gameOverPanel)
             gameOverPanel.SetActive(true);
+            // Time.timeScale = 0f;
         Debug.Log("Game Over!");
-        Time.timeScale = 0f;
+        // Time.timeScale = 0f;
     }
 
     private void WinGame()
@@ -208,8 +209,9 @@ public class GameManager : MonoBehaviour
         DisablePlayer();
         if (winPanel)
             winPanel.SetActive(true);
+            // Time.timeScale = 0f;
         Debug.Log("You Win!");
-        Time.timeScale = 0f;
+        // Time.timeScale = 0f;
     }
 
 }
