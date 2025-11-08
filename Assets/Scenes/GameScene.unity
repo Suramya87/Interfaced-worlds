@@ -812,12 +812,13 @@ GameObject:
   - component: {fileID: 597083585}
   - component: {fileID: 597083584}
   - component: {fileID: 597083583}
+  - component: {fileID: 597083587}
   m_Layer: 6
   m_Name: Plane
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 2147483647
   m_IsActive: 1
 --- !u!64 &597083583
 MeshCollider:
@@ -909,9 +910,42 @@ Transform:
   m_LocalPosition: {x: 1.3071, y: -1.25, z: 1.3071}
   m_LocalScale: {x: 5.6327, y: 1, z: 6.2614}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 983077029}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &597083587
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 597083582}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7a5ac11cc976e418e8d13136b07e1f52, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Unity.AI.Navigation::Unity.AI.Navigation.NavMeshSurface
+  m_SerializedVersion: 0
+  m_AgentTypeID: 0
+  m_CollectObjects: 0
+  m_Size: {x: 10, y: 10, z: 10}
+  m_Center: {x: 0, y: 2, z: 0}
+  m_LayerMask:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  m_UseGeometry: 0
+  m_DefaultArea: 0
+  m_GenerateLinks: 0
+  m_IgnoreNavMeshAgent: 1
+  m_IgnoreNavMeshObstacle: 1
+  m_OverrideTileSize: 0
+  m_TileSize: 256
+  m_OverrideVoxelSize: 0
+  m_VoxelSize: 0.16666667
+  m_MinRegionArea: 2
+  m_NavMeshData: {fileID: 23800000, guid: 57a1da4fdb1c7b04b809126b8d915380, type: 2}
+  m_BuildHeightMesh: 0
 --- !u!1001 &724243356
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1539,6 +1573,61 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 914548879}
   m_CullTransparentMesh: 1
+--- !u!1 &983077028
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 983077029}
+  - component: {fileID: 983077030}
+  m_Layer: 6
+  m_Name: ObstacleSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &983077029
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983077028}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 597083586}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &983077030
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 983077028}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d518e4f23c0b9b54d81c206dc50044ca, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::RandomObstacleSpawner
+  obstaclePrefabs:
+  - {fileID: 6307577344346506480, guid: 72a00d3be80e52347a78bc9b9ca2a298, type: 3}
+  - {fileID: 8990358713641245268, guid: ee6f7dddb13e173459b7db24641064bb, type: 3}
+  - {fileID: 3863796519959086437, guid: e8bcbf432e86fea46849f58afdd6bcf8, type: 3}
+  obstacleCount: 20
+  areaSize: {x: 50, y: 0, z: 50}
+  groundLayer:
+    serializedVersion: 2
+    m_Bits: 4294967295
+  minScale: 1
+  maxScale: 3
 --- !u!1 &1181290125
 GameObject:
   m_ObjectHideFlags: 0
